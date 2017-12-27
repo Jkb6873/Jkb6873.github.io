@@ -42,7 +42,7 @@ h2 {
   .sidenav a {font-size: 18px;}
 }
 
-.dropbtn {
+.side-drop {
     background-color: #111;
     color: #818181;
     padding: 8px 8px 8px 32px;
@@ -52,23 +52,23 @@ h2 {
     transition: 0.5s;
 }
 
-.dropbtn:hover, .dropbtn:focus {
+.side-drop:hover, .side-drop:focus {
     color: #f1f1f1;
 }
 
-.dropdown {
+.side-dropdown {
     position: relative;
     display: inline-block;
 }
 
-.dropdown-content {
+.side-dropdown-content {
     display: none;
     position: relative;
     background-color: #111;
     min-width: 160px;
 }
 
-.dropdown-content a {
+.side-dropdown-content a {
     color: #818181;
     padding: 12px 50px;   
 }
