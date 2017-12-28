@@ -13,12 +13,12 @@
 		<a href="index.html">Home</a>
 		<button class="accordion2">Projects</button>
 			<div class="panel2">
-				<a href="projects.html#all">All</a>
-				<a href="projects.html#C++">C++</a>
-		    	<a href="projects.html#Python">Python</a>
-		    	<a href="projects.html#HTML">HTML/CSS</a>
-		    	<a href="projects.html#Lua">Lua</a>
-				<a href="projects.html#Logic">Logic</a>
+				<a onclick="ToggleTabs('All')">All</a>
+				<a onclick="ToggleTabs('#C++')">C++</a>
+		    	<a onclick="ToggleTabs('#Python')">Python</a>
+		    	<a onclick="ToggleTabs('#HTML')">HTML/CSS</a>
+		    	<a onclick="ToggleTabs('#Lua')">Lua</a>
+				<a onclick="ToggleTabs('#Logic')">Logic</a>
 			</div>
 		<a href="contact.html">Contact Me</a>
 	</div>
@@ -68,7 +68,28 @@
   			}
 		});
 	}
-
+	function ToggleTabs(tab){
+		var allTabs = document.getElementsByClassName("accordion");
+		if(tab=="All"){
+  			for(i = 0; i < allTabs.length; i++){
+  				var panel = allTabs[i].nextElementSibling;
+  				if(!panel.style.maxHeight){
+  					allTabs[i].click();
+  				}
+  			}
+  		} else {
+   			for(i = 0; i < allTabs.length; i++){
+   				var panel = allTabs[i].nextElementSibling;
+   				//if the panel is at open, and should be closed
+   				//or if the panel is closed, and should be open
+   				//then click. 
+  				if 	(panel.style.maxHeight && allTabs[i] != document.getElementById(tab) || 
+  					!panel.style.maxHeight && allTabs[i] == document.getElementById(tab)){
+  					allTabs[i].click();
+  				}
+  			}
+  		}
+	}
 	function AccordionSetUp(){
 		var acc = document.getElementsByClassName("accordion");
 		var i;
