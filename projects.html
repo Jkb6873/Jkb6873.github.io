@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Projects</title>
 	<link rel="stylesheet" href="testexternal.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js'></script>
 </head>
 
 <body>
@@ -24,28 +25,58 @@
 	</div>
 
 
-	<h1>Projects Page</h1>
-	<h2>Work in progress.</h2>
-	<h2>Put in a big drop down menu that opens to the correct tab<h2>
+	<h1 class='page'>Projects Page</h1>
+	<h2 class='page'>Work in progress.</h2>
+	<h2 class='page'>Put in a big drop down menu that opens to the correct tab<h2>
 
 	<button id="#C++" class="accordion">C++</button>
 	<div class="panel">
-		<div class="cube_container">
-			<a href="https://github.com/Jkb6873/School-Work/tree/master/ChainMatrixMultiplication">
+		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/ChainMatrixMultiplication/README.md', 'MatDesc')">
+			
+			<button id="CppBtn1">
   				<img class="cube" src="pictures/matmult.png"></img>
-  			</a>
+  			</button>
+
+  			<div id="CppMod1" class="modal">
+  				<div class="modal-content">
+    				<span id="CppClose1" class="close">&times;</span>
+    				<p id="MatDesc">Some text in the Modal..</p>
+  				</div>
+			</div>
+
   			<div class="description">Matrix Multiplication Optimization</div>
   		</div>
-  		<div class="cube_container">
-  			<a href="https://github.com/Jkb6873/School-Work/tree/master/HashingImplementations">
+  		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/HashingImplementations/README.md','HashDesc')">
+  			
+  			<button id="CppBtn2">
   				<img class="cube" src="pictures/hash.png"></img>
-  			</a>
+  			</button>
+
+  			<div id="CppMod2" class="modal">
+  				<div class="modal-content">
+    				<span id="CppClose2" class="close">&times;</span>
+    				<p id="HashDesc">Some text in the Modal..</p>
+  				</div>
+			</div>
+
+
   			<div class="description">Hashing Implementation Test</div>
   		</div>
-  		<div class="cube_container">
-  			<a href="https://github.com/Jkb6873/School-Work/tree/master/DjikstraTest">
+  		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/DjikstraTest/README.md', 'DjikDesc')">
+  			
+  			<button id="CppBtn3">
   				<img class="cube" src="pictures/graph1.png"></img>
-  			</a>
+  			</button>
+
+
+  			<div id="CppMod3" class="modal">
+  				<div class="modal-content">
+    				<span id="CppClose3" class="close">&times;</span>
+    				<p id="DjikDesc">Some text in the Modal..</p>
+  				</div>
+			</div>
+
+
   			<div class="description">Djikstra's Algorithm Implementation</div>
   		</div>
 	</div>
@@ -111,6 +142,24 @@
   			}
   		}
 	}
+	
+	function OpenREADME(link, id){
+		var allText;
+		var markdown;
+		var txtFile = new XMLHttpRequest();
+		txtFile.open("GET", link, true);
+		txtFile.onreadystatechange = function(){
+			if (txtFile.readyState == 4 && txtFile.status == 200) {
+		    	allText = txtFile.responseText;
+		    	var converter = new showdown.Converter({tables: 'true'}),
+    			markdown = converter.makeHtml(allText);
+			}
+			document.getElementById(id).innerHTML = markdown;
+		}
+		txtFile.send();
+	}
+
+
 	function AccordionSetUp(){
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -143,12 +192,30 @@
 		  });
 		}
 	}
-	Onload()
-	AccordionSetUp2()	
-	AccordionSetUp()
+
+	function PopUpSetUp(popup, openbtn, close){
+		var modal = document.getElementById(popup);
+		var btn = document.getElementById(openbtn);
+		var span = document.getElementById(close);
+		btn.onclick = function() {
+	    	modal.style.display = "block";
+			window.onclick = function(event) {
+	    		if (event.target == modal) {
+	        		modal.style.display = "none";
+	    		}
+			}
+		}
+		span.onclick = function() {
+		    modal.style.display = "none";
+		}
+	}
+
+	Onload();
+	PopUpSetUp('CppMod1', 'CppBtn1', 'CppClose1');
+	PopUpSetUp('CppMod2', 'CppBtn2', 'CppClose2');
+	PopUpSetUp('CppMod3', 'CppBtn3', 'CppClose3');
+	AccordionSetUp2();	
+	AccordionSetUp();
 	</script>
 	
 </body>	
-
-
-</html>
