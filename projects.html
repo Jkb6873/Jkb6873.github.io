@@ -25,14 +25,13 @@
 	</div>
 
 
-	<h1 class='page'>Projects Page</h1>
-	<h2 class='page'>Work in progress.</h2>
-	<h2 class='page'>Put in a big drop down menu that opens to the correct tab<h2>
+	<h1 class='header'>Projects Page</h1>
+	<h2 class='header'>Work in progress.</h2>
 
 	<button id="#C++" class="accordion">C++</button>
 	<div class="panel">
 		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/ChainMatrixMultiplication/README.md', 'MatDesc')">
-			
+
 			<button id="CppBtn1">
   				<img class="cube" src="pictures/matmult.png"></img>
   			</button>
@@ -47,7 +46,7 @@
   			<div class="description">Matrix Multiplication Optimization</div>
   		</div>
   		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/HashingImplementations/README.md','HashDesc')">
-  			
+
   			<button id="CppBtn2">
   				<img class="cube" src="pictures/hash.png"></img>
   			</button>
@@ -63,7 +62,7 @@
   			<div class="description">Hashing Implementation Test</div>
   		</div>
   		<div class="cube_container" onclick="OpenREADME('https://raw.githubusercontent.com/Jkb6873/School-Work/master/DjikstraTest/README.md', 'DjikDesc')">
-  			
+
   			<button id="CppBtn3">
   				<img class="cube" src="pictures/graph1.png"></img>
   			</button>
@@ -109,7 +108,7 @@
 	<script>
 	function Onload(){
 		document.addEventListener('DOMContentLoaded', function(event){
-  			var target = window.location.hash; 
+  			var target = window.location.hash;
   			if(target == "#all"){
   				var allTabs = document.getElementsByClassName("accordion");
   				for(i = 0; i < allTabs.length; i++){
@@ -134,15 +133,15 @@
    				var panel = allTabs[i].nextElementSibling;
    				//if the panel is at open, and should be closed
    				//or if the panel is closed, and should be open
-   				//then click. 
-  				if 	(panel.style.maxHeight && allTabs[i] != document.getElementById(tab) || 
+   				//then click.
+  				if 	(panel.style.maxHeight && allTabs[i] != document.getElementById(tab) ||
   					!panel.style.maxHeight && allTabs[i] == document.getElementById(tab)){
   					allTabs[i].click();
   				}
   			}
   		}
 	}
-	
+
 	function OpenREADME(link, id){
 		var allText;
 		var markdown;
@@ -172,7 +171,7 @@
 		      panel.style.maxHeight = null;
 		    } else {
 		      panel.style.maxHeight = panel.scrollHeight + "px";
-		    } 
+		    }
 		  });
 		}
 	}
@@ -188,7 +187,7 @@
 		      panel.style.maxHeight = null;
 		    } else {
 		      panel.style.maxHeight = panel.scrollHeight + "px";
-		    } 
+		    }
 		  });
 		}
 	}
@@ -214,8 +213,8 @@
 	PopUpSetUp('CppMod1', 'CppBtn1', 'CppClose1');
 	PopUpSetUp('CppMod2', 'CppBtn2', 'CppClose2');
 	PopUpSetUp('CppMod3', 'CppBtn3', 'CppClose3');
-	AccordionSetUp2();	
+	AccordionSetUp2();
 	AccordionSetUp();
 	</script>
-	
-</body>	
+
+</body>
