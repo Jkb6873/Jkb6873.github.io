@@ -77,7 +77,9 @@ body {
     border: none;
     text-align: left;
     outline: none;
+    overflow: hidden;
     font-size: 25px;
+    font-family: serif;
     transition: 0.4s;
 }
 
